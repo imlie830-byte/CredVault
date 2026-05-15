@@ -3,29 +3,37 @@ import java.util.Scanner;
 public class VaultApp {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-
-        System.out.println("--- Java Credential Vault v1.0 ---");
+        VaultManager myManager = new VaultManager(); // Create the manager
         
-        // 1. Ask for the Website/Resource
-        System.out.print("Enter Website/App (e.g. GitHub): ");
-        String site = input.nextLine();
+        boolean running = true;
 
-        // 2. Ask for the Account Name
-        System.out.print("Enter Username/Email: ");
-        String name = input.nextLine();
+        while (running) {
+            System.out.println("\n1. Add Credential");
+            System.out.println("2. Show All");
+            System.out.println("3. Exit");
+            System.out.print("Choose an option: ");
+            
+            String choice = input.nextLine();
 
-        // 3. Ask for the Password
-        System.out.print("Enter Password: ");
-        String pass = input.nextLine();
+            if (choice.equals("1")) {
+                System.out.print("Website: ");
+                String site = input.nextLine();
+                System.out.print("Username: ");
+                String user = input.nextLine();
+                System.out.print("Password: ");
+                String pass = input.nextLine();
 
-        // Create the object with ALL THREE pieces of info
-        Credential myNewSecret = new Credential(site, name, pass);
-
-        System.out.println("\n--- Success! ---");
-        System.out.println("Resource: " + myNewSecret.websiteUrl);
-        System.out.println("Identity: " + myNewSecret.accountName);
-        System.out.println("Status: Saved in Memory (Unencrypted)");
-        
+                Credential c = new Credential(site, user, pass);
+                myManager.addCredential(c);
+            } 
+            else if (choice.equals("2")) {
+                myManager.showAll();
+            } 
+            else {
+                running = false;
+            }
+        }
+        System.out.println("Session Terminated , Thanks for using CredVault !");
         input.close();
     }
 }
