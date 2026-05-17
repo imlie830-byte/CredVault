@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class VaultApp {
     public static void main(String[] args) {
+        SystemService sys = new SystemService();
         Scanner input = new Scanner(System.in);
         VaultManager myManager = new VaultManager(); // Create the manager
         
@@ -25,6 +26,8 @@ public class VaultApp {
 
                 Credential c = new Credential(site, user, pass);
                 myManager.addCredential(c);
+                String scrambled = sys.encrypt(c.getPassword());
+
             } 
             else if (choice.equals("2")) {
                 myManager.showAll();

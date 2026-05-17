@@ -1,8 +1,8 @@
 // Updated blueprint with a Resource field
 public class Credential {
-    public String websiteUrl;   // Which site is this for?
-    public String accountName;  // Your username/email
-    public String password;     // The secret
+    private String websiteUrl;   // Which site is this for?
+    private String accountName;  // Your username/email
+    private String password;     // The secret
 
     // Update the constructor to handle three things now
     public Credential(String websiteUrl, String accountName, String password) {
@@ -10,4 +10,8 @@ public class Credential {
         this.accountName = accountName;
         this.password = password;
     }
+
+    public String getWebsiteUrl() { return websiteUrl; }
+    public String getAccountName() { return accountName; }
+    public String getPassword() { return password; }
 }
