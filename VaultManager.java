@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class VaultManager {
+    SystemService sys = new SystemService();
     // This list will hold all our Credential objects
     private ArrayList<Credential> allCredentials = new ArrayList<>();
 
@@ -14,7 +15,8 @@ public class VaultManager {
     public void showAll() {
         System.out.println("\n--- Your Stored Credentials ---");
         for (Credential c : allCredentials) {
-            System.out.println("Site: " + c.websiteUrl + " | User: " + c.accountName);
+            System.out.println("Site: " + c.getWebsiteUrl() + " | User: " + c.getAccountName() + " | Password :" + sys.encrypt(c.getPassword()));
         }
+
     }
 }
