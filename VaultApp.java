@@ -26,11 +26,11 @@ public class VaultApp {
 
                 Credential c = new Credential(site, user, pass);
                 myManager.addCredential(c);
-                String scrambled = sys.encrypt(c.getPassword());
 
             } 
             else if (choice.equals("2")) {
                 myManager.showAll();
+
             } 
             else {
                 running = false;

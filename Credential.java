@@ -11,7 +11,7 @@ public class Credential {
         this.password = password;
     }
 
-    public String getWebsiteUrl() { return websiteUrl; }
-    public String getAccountName() { return accountName; }
-    public String getPassword() { return password; }
+    public String getWebsiteUrl() { return this.websiteUrl; }
+    public String getAccountName() { return this.accountName; }
+    public String getPassword() { return this.password; }
 }
